@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome cdn -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- daisyui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Payooo</title>
+</head>
+
+<body class="text-center flex justify-center ">
+    <!-- main container section -->
+    <div class="main-container w-[100%]   bg-[hsl(220,16%,96%)] max-w-[350px] ">
+        <header
+            class="flex px-[10px] justify-between   bg-[white] items-center border-b-[1px] border-[rgba(8,8,8,0.1)] mt-[18px] pb-[10px]">
+            <!-- left -->
+            <div class="left flex justify-between items-center gap-[8px]">
+
+                <div class="logo-container h-[48px] w-[50px]">
+                    <img src="assets/Group.png" alt="">
+                </div>
+                <div class="text-container">
+                    <h2  class="text-[18px] font-extrabold  mb-[6px]">$<span id="available-amount">1000</span> </h2>
+                    <p class="text-[14px] text-[rgba(8,8,8,0.5)]
+">Available Balance</p>
+                </div>
+
+
+            </div>
+            <!-- right -->
+            <div class="right ">
+                <button
+                    class="text-[14px]  text-[rgba(8,8,8,0.5)] p-[12px] border-[1px]  border-[rgba(8,8,8,0.5)] rounded-[8px]">
+                    <a href="#" class=""><i
+                            class="fa-solid fa-arrow-right-from-bracket  rotate-[180deg] pl-[4px]"></i></a>
+                    Log Out</button>
+
+            </div>
+        </header>
+        <div class="section1 bg-[white] rounded-[20px] w-[100%] max-w-[350px] px-[10px] pt-[32px] text-start">
+            <h2 class="text-[24px] font-semibold leading-[30px] mb-[12px] text-[black]">🔥 Welcome to Payooo!</h2>
+
+            <p class="leading-[26px] text-[rgba(8,8,8,0.5)] mb-[24px]">Enjoy easy and convenient financial services with
+                us. Cashout charge is low and </p>
+            <div class="parent rounded-[50px] pb-[20px]   grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-[16.5px] ">
+                <div id="add-button"
+                    class=" child  bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/purse1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">Add Money</p>
+                </div>
+                <div id="cashout-button"
+                    class=" child bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/send1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">Cashout</p>
+                </div>
+                <div id="transfer-button"
+                    class=" child  bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/transaction1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">transfer Money</p>
+                </div>
+                <div
+                    class=" child  bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/bonus1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">Get Bonus</p>
+                </div>
+                <div
+                    class=" child  bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/wallet1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">Pay Bill</p>
+                </div>
+                <div
+                    class=" child  bg-[hsl(220,16%,96%)] grid place-items-center p-[20px] text-center border-[1px] border-[rgba(8,8,8,0.1)] rounded-[16px]">
+
+                    <img class="mb-[8px]" src="assets/purse1.png" alt="purse1">
+                    <p class="text-[14px] font-semibold text-[gray]">Transactions</p>
+                </div>
+            </div>
+        </div>
+            <!-- add money -->
+            <div id="add-money"  class="form  mt-[20px] text-start px-[20px]">
+
+                <h2 class="text-[18px] font-semibold mb-[16px]">Add Money</h2>
+                <!-- form  -->
+                <form action="" class=" bg-[white] p-[24px] rounded-[20px] mb-[20px]">
+                    <!-- Select A Bank -->
+<h2 class="font-medium mb-[12px]">Select A Bank</h2>
+
+<select id="bank" class="select text-[gray]   bg-[hsl(220,16%,96%)] mb-[16px] rounded-[32px]">
+  <option disabled selected class="">Select Bank</option>
+  <option>Crimson</option>
+  <option>Amber</option>
+  <option>Velvet</option>
+</select>
+<!-- Bank Account Number -->
+<label for="" class="font-medium ">Bank Account Number</label>
+<input id="account-number" type="text" placeholder="Enter 11 digit acount number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Amount to Add -->
+<label for="" class="font-medium ">Amount to Add</label>
+<input id="add-amount" type="text" placeholder="Add Amount to Withdraw" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Pin Number -->
+<label for="" class="font-medium ">Pin Number</label>
+<input id="pin" type="text" placeholder="Enter 4 digit pin number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+
+<button id="add-money-btn" class="btn w-full bg-[#0874f2] rounded-[32px] text-[white] text-[16px] font-semibold Py-[14px] mt-[0px]">Add Money</button>
+                </form>
+            </div>
+            <!-- cash out -->
+            <div id="cashout" style="display: none;" class="form  mt-[20px] text-start px-[20px]">
+
+                <h2  class="text-[18px] font-semibold mb-[16px]">Cash out</h2>
+                <!-- form  -->
+                <form action="" class=" bg-[white] p-[24px] rounded-[20px] mb-[20px]">
+                
+<!-- Agent Number -->
+<label for="" class="font-medium ">Agent Number</label>
+<input id="Agent-number"  type="text" placeholder="Enter 11 digit number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Amount -->
+<label for="" class="font-medium ">Amount</label>
+<input  id="cashout-amount" type="text" placeholder="Enter amount to withdraw" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Pin Number -->
+<label for="" class="font-medium ">Pin Number</label>
+<input id="cashout-pin" type="text" placeholder="Enter 4 digit pin number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+
+<button id="withdraw-btn"  class="btn w-full bg-[#0874f2] rounded-[32px] text-[white] text-[16px] font-semibold Py-[14px] mt-[0px]">Withdraw Money</button>
+</form>
+</div>
+<!-- tranfer money -->
+            <div id="tranfer" style="display: none;" class="form  mt-[20px] text-start px-[20px]">
+
+                <h2  class="text-[18px] font-semibold mb-[16px]">Transfer Money</h2>
+                <!-- form  -->
+                <form action="" class=" bg-[white] p-[24px] rounded-[20px] mb-[20px]">
+                
+<!-- Agent Number -->
+<label for="" class="font-medium ">User Account Number</label>
+<input id="user-account-number"  type="text" placeholder="Enter 11 digit number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Amount -->
+<label for="" class="font-medium ">Amount</label>
+<input  id="tranfer-amount" type="text" placeholder="Enter amount to withdraw" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+<!-- Pin Number -->
+<label for="" class="font-medium ">Pin Number</label>
+<input id="tranfer-pin" type="text" placeholder="Enter 4 digit pin number" class="input mt-[12px] text-[gray] mb-[16px] rounded-[32px]   bg-[hsl(220,16%,96%)] " />
+
+<button id="withdraw-btn"  class="btn w-full bg-[#0874f2] rounded-[32px] text-[white] text-[16px] font-semibold Py-[14px] mt-[0px]">Withdraw Money</button>
+                </form>
+            </div>
+           
+
+    </div>
+<script src="home.js"></script>
+</body>
+
+</html>

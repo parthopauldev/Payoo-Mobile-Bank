@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- daisyui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+    <!-- tailwind cdn -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+ <title>Payooo</title>
+</head>
+<body class="h-[100vh] bg-[#f4f5f7] flex flex-col justify-center items-center">
+  <!-- logo -->
+  <div class="logo w-[100%] max-w-[310px] mb-[10px] h-[130px] bg-[url(./assets/bg.png)]  bg-cover grid place-items-center  ">
+   <img src="assets/Group.png" alt="">
+
+  </div>
+  <!-- form -->
+    <div class="main-container bg-white w-[100%] max-w-[350px] p-[32px] rounded-[24px]">
+      <form >
+        <!-- mobile number login -->
+    <label for="number" class="text-[black]  font-medium  rounded-[32px]">Mobile Number</label>
+    <br>
+      <input id="number" type="text" class="input placeholder:text-[#080808] placeholder:font-light mb-[16px] mt-[14px] bg-[#f4f5f7] rounded-[32px]" placeholder="Enter Your Number" />
+<br>
+<!-- 4 digit pin login -->
+    <label for="pin" class="text-[black] font-medium mb-[14px]">4 Digit Pin</label>
+    <br>
+    <input id="pin" type="text" class="input placeholder:text-[#080808] placeholder:font-light rounded-[32px] mt-[14px] bg-[#f4f5f7]" placeholder="Enter 4 Digit Pin Number" >
+    <!-- submit button -->
+    <input  id="loginButton"  class="  btn btn-primary w-full mt-[16px] rounded-[32px] bg-[#0874f2] border-0 hover:bg-[#333333]" value="Login" />
+      </form> 
+    </div>
+ <script src="./script.js"></script>
+</body>
+</html>
