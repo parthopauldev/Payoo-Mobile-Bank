@@ -1,4 +1,6 @@
 
+let allTransactionsHistory=[]
+
 // function to get number value from the form 
 
 
@@ -8,13 +10,17 @@ function getNumberValue(id) {
    
     
     const amountNumber = parseInt(amountString);
+    document.getElementById(id).value='';
     return amountNumber;
+    
 }
 // function to get string value from the form 
 function getStringValue(id) {
     const amountString = document.getElementById(id).value;
     
+    document.getElementById(id).value='';
     return amountString;
+
 }
 // function to get inner text from the element
 function getinnertext(id) {
@@ -32,7 +38,7 @@ function setInnerText(id,text) {
     document.getElementById('add-money-btn').addEventListener('click', function(a){
        a.preventDefault();
        
-   let validPin=123;
+   let validPin=1234;
         // get values from the forms
 const bank=getStringValue('bank')
 const accountNumber=getStringValue('account-number');
@@ -58,7 +64,12 @@ let totalNewAvailableAmount= availableAmount + addAmount;
 
 setInnerText('available-amount', totalNewAvailableAmount);
 
-
+let tranHistory ={
+    name:'Add Money',
+    time:new Date().toLocaleTimeString(),
+    img:'purse1.png'
+} ;
+allTransactionsHistory.push(tranHistory)
 
 }
 );
@@ -91,14 +102,22 @@ function removeAndAddStyle(cardClass,cardId) {
 document.getElementById('add-button').addEventListener('click', function(){
     noneAllForm('form','add-money');
    removeAndAddStyle('child','add-button');
+
+allTransactionsHistory.push(tranHistory)
+console.log(allTransactionsHistory);
+
 })
 document.getElementById('cashout-button').addEventListener('click', function(){
    noneAllForm('form','cashout');
   removeAndAddStyle('child','cashout-button');
+
+
 })
 document.getElementById('transfer-button').addEventListener('click', function(){
    noneAllForm('form','tranfer');
   removeAndAddStyle('child','transfer-button');
+
+
 })
 document.getElementById('bonus-button').addEventListener('click', function(){
 
@@ -108,19 +127,37 @@ document.getElementById('bonus-button').addEventListener('click', function(){
 document.getElementById('pay-card-button').addEventListener('click',function () {
     noneAllForm('form','pay-bill');
     removeAndAddStyle('child','pay-card-button')
-    
+  
+allTransactionsHistory.push(tranHistory)
 })
 document.getElementById('Transaction-button').addEventListener('click',function () {
-    console.log('fggggggg');
+    console.log(allTransactionsHistory);
     
     noneAllForm('form','tran');
     removeAndAddStyle('child','Transaction-button')
-    
+   
+   let tranHistory=document.getElementById('tran-history') ;
+   tranHistory.innerHTML='';
+    for (const element of allTransactionsHistory) {
+let newTranHistory=  document.createElement('div') ;
+newTranHistory.innerHTML=`<div class="flex rounded-[12px]  py-[13px] px-[16px] justify-start items-center bg-[white] mb-[12px]">
+                <div class="bg-[hsl(220,16%,96%)] p-[10px] rounded-[50%] flex justify-center items-center mr-[15px]">
+
+                    <img src="assets/${element.img}" alt="" class=" ">
+                </div>
+                <div class="">
+                    <h3 class="font-semibold pb-[5px]">${element.name}<h3>
+                    <p class="text-[12px] text-[#080808]">${element.time}</p>
+                </div>
+               </div>`
+              
+tranHistory.appendChild(newTranHistory);
+    }
 })
 // withdraw feature
 document.getElementById('withdraw-btn').addEventListener('click', function(e){
     e.preventDefault();
-    let validPin=123;
+    let validPin=1234;
 let agentNumber=getStringValue('Agent-number');
 let cashoutAmount=getNumberValue('cashout-amount'); 
 
@@ -140,11 +177,17 @@ if (validPin !== cashOutPin){
 
 let totalNewAvailableAmount= availableAmount - cashoutAmount;
 setInnerText('available-amount', totalNewAvailableAmount);
+let tranHistory ={
+    name:'CashOut',
+    time:new Date().toLocaleTimeString(),
+    img:'send1.png'
+    }    ;
+allTransactionsHistory.push(tranHistory)
 });
 // send now feature
 document.getElementById('send-now-btn').addEventListener('click', function(e){
     e.preventDefault();
-    let validPin=123;
+    let validPin=1234;
    let sendAccountNumber=getStringValue('user-account-number')
     let sendPin=getNumberValue('tranfer-pin')
     if (sendAccountNumber.length >11) {
@@ -158,6 +201,13 @@ console.log(sendMoney);
    let availableAmount=parseInt( getinnertext('available-amount'));
 let totalNewAvailableAmount= availableAmount - sendMoney;
 setInnerText('available-amount', totalNewAvailableAmount);
+let tranHistory ={
+    name:'Send Money',
+    time:new Date().toLocaleTimeString(),
+    img:'transaction1.png'
+
+} ;
+allTransactionsHistory.push(tranHistory);
 
 })
 // get bonus feature
@@ -179,7 +229,7 @@ setInnerText('available-amount', totalNewAvailableAmount);
     // pay bill feature
     document.getElementById('pay-btn').addEventListener('click',function(e){
          e.preventDefault();
-        let validPin=123;
+        let validPin=1234;
         let payMethod=getStringValue('method');
         let accountNumber =getStringValue('bill-account-number') ;
         let payAmount=getNumberValue('pay-amount')
@@ -202,5 +252,10 @@ setInnerText('available-amount', totalNewAvailableAmount);
       let availableAmount=parseInt( getinnertext('available-amount'));
 let totalNewAvailableAmount= availableAmount -payAmount;
 setInnerText('available-amount', totalNewAvailableAmount);
-        
+        let tranHistory ={
+    name:'Pay Bill',
+    time:new Date().toLocaleTimeString(),
+    img:'wallet1.png'
+} ;
+allTransactionsHistory.push(tranHistory)
     })
