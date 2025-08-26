@@ -1,5 +1,7 @@
 
 // function to get number value from the form 
+
+
 function getNumberValue(id) {
    
     const amountString = document.getElementById(id).value;
@@ -103,9 +105,16 @@ document.getElementById('bonus-button').addEventListener('click', function(){
     noneAllForm('form','bonus');
       removeAndAddStyle('child','bonus-button');
 })
-document.getElementById('pay-card-button').addEventListener('click',async function () {
+document.getElementById('pay-card-button').addEventListener('click',function () {
     noneAllForm('form','pay-bill');
     removeAndAddStyle('child','pay-card-button')
+    
+})
+document.getElementById('Transaction-button').addEventListener('click',function () {
+    console.log('fggggggg');
+    
+    noneAllForm('form','tran');
+    removeAndAddStyle('child','Transaction-button')
     
 })
 // withdraw feature
