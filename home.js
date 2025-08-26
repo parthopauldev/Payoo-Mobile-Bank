@@ -1,7 +1,10 @@
 
 // function to get number value from the form 
 function getNumberValue(id) {
+   
     const amountString = document.getElementById(id).value;
+   
+    
     const amountNumber = parseInt(amountString);
     return amountNumber;
 }
@@ -81,7 +84,7 @@ function removeAndAddStyle(cardClass,cardId) {
    document.getElementById(cardId).style.borderColor='black';
 }
 
-
+// added card bg and border when it is clicked
 
 document.getElementById('add-button').addEventListener('click', function(){
     noneAllForm('form','add-money');
@@ -94,6 +97,16 @@ document.getElementById('cashout-button').addEventListener('click', function(){
 document.getElementById('transfer-button').addEventListener('click', function(){
    noneAllForm('form','tranfer');
   removeAndAddStyle('child','transfer-button');
+})
+document.getElementById('bonus-button').addEventListener('click', function(){
+
+    noneAllForm('form','bonus');
+      removeAndAddStyle('child','bonus-button');
+})
+document.getElementById('pay-card-button').addEventListener('click',async function () {
+    noneAllForm('form','pay-bill');
+    removeAndAddStyle('child','pay-card-button')
+    
 })
 // withdraw feature
 document.getElementById('withdraw-btn').addEventListener('click', function(e){
@@ -119,3 +132,66 @@ if (validPin !== cashOutPin){
 let totalNewAvailableAmount= availableAmount - cashoutAmount;
 setInnerText('available-amount', totalNewAvailableAmount);
 });
+// send now feature
+document.getElementById('send-now-btn').addEventListener('click', function(e){
+    e.preventDefault();
+    let validPin=123;
+   let sendAccountNumber=getStringValue('user-account-number')
+    let sendPin=getNumberValue('tranfer-pin')
+    if (sendAccountNumber.length >11) {
+        alert('Account Number Invalid')
+    }
+    if (validPin !==sendPin) {
+        alert('pin invalid')
+    }
+    let sendMoney=getNumberValue('send-money') ;
+console.log(sendMoney);
+   let availableAmount=parseInt( getinnertext('available-amount'));
+let totalNewAvailableAmount= availableAmount - sendMoney;
+setInnerText('available-amount', totalNewAvailableAmount);
+
+})
+// get bonus feature
+document.getElementById('get-bonus-btn').addEventListener('click', function(e){
+    e.preventDefault()
+        let couponCode=1234;
+let userCoponCode=getNumberValue('coupon');
+if (userCoponCode !== couponCode){
+    alert('Invalid Coupon Code');}else{
+      alert('Congratulation! You got 100tk bonus');
+        let availableAmount=parseInt( getinnertext('available-amount'));
+let totalNewAvailableAmount= availableAmount + 100;
+setInnerText('available-amount', totalNewAvailableAmount);
+    }
+    })
+  
+
+
+    // pay bill feature
+    document.getElementById('pay-btn').addEventListener('click',function(e){
+         e.preventDefault();
+        let validPin=123;
+        let payMethod=getStringValue('method');
+        let accountNumber =getStringValue('bill-account-number') ;
+        let payAmount=getNumberValue('pay-amount')
+        console.log(payAmount);
+       
+        
+        
+        let pin=getNumberValue('bill-pin') ;
+        
+        console.log(pin);
+        
+        if (accountNumber.length>11) {
+            alert('account number invalid')
+            return
+        }
+        if (validPin !== pin) {
+            alert('your pin invalid')
+            return
+        }
+      let availableAmount=parseInt( getinnertext('available-amount'));
+let totalNewAvailableAmount= availableAmount -payAmount;
+setInnerText('available-amount', totalNewAvailableAmount);
+        
+    })
